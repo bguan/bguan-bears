@@ -11,4 +11,4 @@ Note:
 
 ## Example
 
-https://bguan-bears.onrender.com/classify?url=https://upload.wikimedia.org/wikipedia/commons/3/33/Jasper_Dwayne_Reilander-4.jpg
+https://bguan-bears.onrender.com/classify?url=https://n.nordstrommedia.com/id/sr3/8469a1d0-a660-49df-b4e5-96deb40cdbaf.jpeg
