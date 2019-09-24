@@ -6,7 +6,7 @@ Starlette ASGI server that can classify an image as Black, Grizzly or Teddy bear
 Just following Lesson 2 of FastAI Course1 v3...
 
 Examples:
-https://localhost:8008/classify?url=https://upload.wikimedia.org/wikipedia/commons/3/33/Jasper_Dwayne_Reilander-4.jpg
+https://localhost:8008/classify?url=https://n.nordstrommedia.com/id/sr3/8469a1d0-a660-49df-b4e5-96deb40cdbaf.jpeg
 
 Author: https://github.com/bguan
 License: http://unlicense.org
