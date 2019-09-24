@@ -23,11 +23,22 @@ import sys
 import uvicorn
 
 
+# Useful constants
+MB = 1024*1024
+MAX_READ_BYTES = 5*MB
+
+
 # util func to read bytes using async http
 async def get_bytes(url):
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as response:
-            return await response.read()
+            buffer = b""
+            async for data in response.content.iter_chunked(MAX_READ_BYTES):
+                buffer += data
+                if response.content.at_eof():
+                    return buffer
+                elif len(buffer) > MAX_READ_BYTES:
+                    raise RuntimeError(f"Attempt to read more than { MAX_READ_BYTES//MB } MB")
 
 
 # util func to predict bytes as image
