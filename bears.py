@@ -37,7 +37,7 @@ async def get_bytes(url):
                 buffer += data
                 if response.content.at_eof():
                     return buffer
-                elif len(buffer) > MAX_READ_BYTES:
+                elif len(buffer) >= MAX_READ_BYTES:
                     raise RuntimeError(f"Attempt to read more than { MAX_READ_BYTES//MB } MB")
 
 
@@ -62,7 +62,10 @@ bear_learner = load_learner(".", file="bears.pkl")
 @app.route("/upload", methods=["POST"])
 async def upload(request):
     data = await request.form()
-    bytes = await (data["file"].read())
+    bytes = await (data["file"].read(MAX_READ_BYTES))
+    if len(bytes) >= MAX_READ_BYTES:
+        raise RuntimeError(f"Attempt to upload more than { MAX_READ_BYTES//MB } MB")
+
     return predict_image_from_bytes(bytes)
 
 
